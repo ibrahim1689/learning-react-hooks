@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import NewSongForm from "./NewSongForm";
 
 const SongList = () => {
   const [songs, setSongs] = useState([
@@ -7,18 +8,18 @@ const SongList = () => {
     { title: "This Wild Darkness" },
   ]);
 
-  const addSong = () => {
-    setSongs([...songs, { title: "New Song" }]);
+  const addSong = (title) => {
+    setSongs([...songs, { title }]);
   };
 
   return (
     <div className="song-list">
+      <NewSongForm addSong={addSong} />
       <ul>
         {songs.map((song, index) => (
           <li key={index}>{song.title}</li>
         ))}
       </ul>
-      <button onClick={addSong}>Add a song</button>
     </div>
   );
 };
